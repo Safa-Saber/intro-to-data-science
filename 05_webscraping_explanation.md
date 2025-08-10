@@ -425,5 +425,4 @@ headers = {
 }
 ```
 
-### Teaching Tip:
-Show students how to inspect their own browser headers using the Developer Tools method above. It's a great hands-on way to understand what happens "behind the scenes" when they browse the web!
+### Good Luck!!
