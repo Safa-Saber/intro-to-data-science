@@ -11,46 +11,31 @@ pip install requests beautifulsoup4
 import requests
 from bs4 import BeautifulSoup
 
-def getParsedWebpage(url):
-    headers = {
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-        "Accept-Encoding": "gzip, deflate",
-        "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
-        "Cache-Control": "max-age=0",
-        "Upgrade-Insecure-Requests": "1",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
-        "Referer": "https://www.timeanddate.com/"
-    }
-    response = requests.get(url, headers=headers)
-    if response.status_code == 200:
-        return BeautifulSoup(response.content, 'html.parser')
-    return 'error'
-
-# Scrape weather forecast table
 url = 'https://www.timeanddate.com/weather/usa/new-york/ext'
-soup = getParsedWebpage(url)
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                  "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0 Safari/537.36"
+}
 
-if soup != 'error':
-    table = soup.find('table', class_='tb-theme')
-    
-    if table:
-        rows = table.find_all('tr')[1:6]  # Skip header, get 5 days
-        
-        print("5-Day Weather Forecast for New York:")
-        print("-" * 60)
-        
-        for i, row in enumerate(rows, 1):
-            cells = row.find_all(['td', 'th'])
-            if len(cells) >= 3:
-                date = cells[0].get_text().strip()
-                temp = cells[1].get_text().strip()
-                condition = cells[2].get_text().strip()
-                
-                print(f"{i}. {date} | {temp} | {condition}")
-    else:
-        print("Weather table not found")
+response = requests.get(url, headers=headers)
+soup = BeautifulSoup(response.text, "html.parser")
+
+table = soup.find("table", id="wt-ext")  
+
+if table:
+    rows = table.find_all("tr")[1:6]  # skip header
+    print("5-Day Weather Forecast for New York:")
+    print("-" * 60)
+    for i, row in enumerate(rows, 1):
+        cells = row.find_all(["td", "th"])
+        if len(cells) >= 3:
+            date = cells[0].get_text(strip=True)
+            temp = cells[1].get_text(strip=True)
+            condition = cells[2].get_text(strip=True)
+            print(f"{i}. {date} | {temp} | {condition}")
 else:
-    print("Failed to scrape website")
+    print("Weather table not found")
+
 ```
 
 ## Explanation of Each Line
