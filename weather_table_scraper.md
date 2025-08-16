@@ -101,9 +101,9 @@ if soup != 'error':
 - **Line 18**: Check if the website was successfully downloaded
 
 ```python
-    table = soup.find('table', class_='tb-theme')
+    table = soup.find('table', id="wt-ext')
 ```
-- **Line 19**: Find the first HTML `<table>` element with class="tb-theme" (weather forecast table)
+- **Line 19**: Find the first HTML `<table>` element with id="wt-ext (weather forecast table)
 
 ```python
     if table:
