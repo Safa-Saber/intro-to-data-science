@@ -1,6 +1,6 @@
 # DELETE Method Tutorial
 
-## Server Code (First Version)
+## Server Code
 
 Create your server file:
 
@@ -92,14 +92,14 @@ Create an HTML file to test the DELETE method:
                 .then((data) => {
                     console.log(data);
                     if (data.affectedRows > 0) {
-                        resultDiv.innerHTML = "✅ Movie deleted successfully!";
+                        resultDiv.innerHTML = " Movie deleted successfully!";
                     } else {
-                        resultDiv.innerHTML = "⚠️ Movie not found";
+                        resultDiv.innerHTML = "⚠ Movie not found";
                     }
                 })
                 .catch((error) => {
                     console.error(error);
-                    resultDiv.innerHTML = "❌ Error: " + error.message;
+                    resultDiv.innerHTML = "Error: " + error.message;
                 });
         }
     </script>
