@@ -26,10 +26,10 @@ const dbConfig = {
 // POST method to create a new movie
 app.post("/movies", async (req, res) => {
   const data = req.body;
-  
+
   try {
     const db = await mysql.createConnection(dbConfig);
-    
+
     const results = await db.query(`
       INSERT INTO movies (
         title,
@@ -49,9 +49,9 @@ app.post("/movies", async (req, res) => {
 
     await db.end();
 
-    res.send({ 
-      message: "Movie created", 
-      movieId: results[0].insertId 
+    res.send({
+      message: "Movie created",
+      movieId: results[0].insertId,
     });
   } catch (error) {
     res.status(500).send({
@@ -64,6 +64,7 @@ app.post("/movies", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
+
 ```
 
 ## HTML Test File
@@ -116,11 +117,11 @@ Create an HTML file to test the POST method:
                 .then((response) => response.json())
                 .then((data) => {
                     console.log(data);
-                    resultDiv.innerHTML = `✅ Movie created successfully! Movie ID: ${data.movieId}`;
+                    resultDiv.innerHTML = ` Movie created successfully! Movie ID: ${data.movieId}`;
                 })
                 .catch((error) => {
                     console.error(error);
-                    resultDiv.innerHTML = "❌ Error: " + error.message;
+                    resultDiv.innerHTML = "Error: " + error.message;
                 });
         }
     </script>
@@ -141,29 +142,6 @@ Create an HTML file to test the POST method:
 4. Click "Create Movie"
 5. Check the result on the webpage and in your database!
 
-## Key Points
-
-- **POST** is used to create new resources
-- We send data in the **body** using `JSON.stringify()`
-- We need to set the **Content-Type** header to "application/json"
-- We use `document.getElementById().value` to get values from HTML inputs
-- The server responds with the new movie's ID
-
-## Why do we need JSON.stringify()?
-
-When we send data to the server, we need to convert our JavaScript object into a string format that can be sent over the internet. 
-
-```javascript
-// This is a JavaScript object
-const movieData = {
-    title: "Test Movie",
-    release_year: 2024
-};
-
-// We need to convert it to a string to send it
-const stringData = JSON.stringify(movieData);
-// Result: '{"title":"Test Movie","release_year":2024}'
-```
 
 **Without JSON.stringify():** The server won't understand the data
 **With JSON.stringify():** The server can read and process the data properly
