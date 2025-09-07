@@ -107,4 +107,4 @@ Create two visualizations for Lincoln High:
 - Add titles and labels to make your plots professional
 - Round numerical results to 2 decimal places for clarity
 
-**Good Luck :)
+**Good luck :)**
