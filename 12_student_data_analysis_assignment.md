@@ -76,7 +76,7 @@ Create two visualizations for Lincoln High:
    - Sort students by their Math scores
    - Add appropriate title and labels
 
-## Challenge Task 🚀
+## Challenge Task
 
 **Multi-School Comparison Analysis**
 
@@ -101,16 +101,10 @@ Create two visualizations for Lincoln High:
 - Include screenshots of your visualizations
 - Write a brief summary (2-3 sentences) of your findings from the challenge task
 
-## Grading Criteria
-- **Data Cleaning (25%)**: Proper handling of data types and missing values
-- **Statistical Analysis (25%)**: Correct calculation of statistical measures
-- **Visualizations (25%)**: Clear, well-labeled charts
-- **Challenge Task (25%)**: Creative analysis and insights
-
 ## Tips
 - Always check your data types after conversion
 - Use `.head()` to preview your DataFrames
 - Add titles and labels to make your plots professional
 - Round numerical results to 2 decimal places for clarity
 
-**Due Date**: [Insert your due date here]
+**Good Luck :)
