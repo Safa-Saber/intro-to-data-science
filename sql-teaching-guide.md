@@ -203,7 +203,7 @@ FROM Students;
 
 ---
 
-## Part 4: Understanding JOINs (Like a 10-Year-Old!)
+## Part 4: Understanding JOINs
 
 ### What is a JOIN?
 
